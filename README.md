@@ -201,7 +201,26 @@ Project-local config works the same way in any `opencode.json(c)` or `.opencode/
 
 See **[docs/LINUX.md](docs/LINUX.md)** for a longer copy-paste guide, including systemd, VNC, dedicated users, and firewall notes.
 
-There are two reliable ways to run this on a Linux server:
+### Linux desktop with a GUI
+
+If your Linux machine has a normal desktop session, Chrome runs natively. You do **not** need Xvfb or VNC:
+
+1. Install Google Chrome or Chromium.
+2. Load `chrome-extension/` at `chrome://extensions`.
+3. Open `https://gemini.google.com/app`, log in, and select Pro.
+4. Install and configure the MCP as usual:
+
+```bash
+cd /opt/gemini-web-bridge-mcp
+npm install
+opencode mcp add gemini --global -- node /opt/gemini-web-bridge-mcp/server.js
+```
+
+That is the whole setup. Xvfb is only needed when there is no display at all.
+
+### Headless Linux server
+
+There are two reliable ways to run this on a headless Linux server:
 
 1. **Recommended for headless servers:** Chrome runs on your laptop/desktop; the server runs OpenCode and the MCP bridge; an SSH tunnel connects the extension to the server.
 2. **Chrome on the server:** Chrome runs under Xvfb on the server. Log in once with VNC, then keep it running headlessly.

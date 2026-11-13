@@ -2,7 +2,9 @@
 
 This guide covers running the MCP server on a Linux machine, including a headless server, and how to log in to Gemini once.
 
-There are two supported deployment models.
+Chrome runs natively on Linux. If your Linux machine has a desktop/GUI, use the [Linux desktop](#linux-desktop-with-a-gui) setup and skip Xvfb and VNC entirely.
+
+There are two supported deployment models for **headless** servers.
 
 | Model | Chrome runs on | Best for | Browser window on server |
 |---|---|---|---|
@@ -10,6 +12,30 @@ There are two supported deployment models.
 | **B. Xvfb + VNC** | The Linux server | Self-contained servers, no laptop in the loop | Virtual, no monitor |
 
 Both models use the same MCP server. Only the location of Chrome differs.
+
+---
+
+## Linux desktop with a GUI
+
+This is the simplest Linux setup:
+
+```bash
+git clone https://github.com/Zaltapar/gemini-web-bridge-mcp.git
+cd gemini-web-bridge-mcp
+npm install
+```
+
+1. Install Google Chrome or Chromium.
+2. Open `chrome://extensions` → Developer mode → **Load unpacked** → `chrome-extension/`.
+3. Open `https://gemini.google.com/app`, log in, select **Pro**.
+4. Configure OpenCode:
+
+```bash
+opencode mcp add gemini --global -- node "$(pwd)/server.js"
+opencode mcp list
+```
+
+That is all. Chrome stays open with the Gemini tab; you can minimize it. Xvfb is only for servers with no display.
 
 ---
 
