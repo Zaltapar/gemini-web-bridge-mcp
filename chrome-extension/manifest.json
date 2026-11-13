@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Web Bridge",
+  "version": "1.2.0",
+  "description": "Relays prompts and files between an MCP server and the Gemini web app using your existing browser session.",
+  "permissions": ["tabs", "scripting", "storage", "cookies"],
+  "host_permissions": [
+    "https://gemini.google.com/*",
+    "https://*.googleusercontent.com/*",
+    "https://*.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Gemini Bridge"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://gemini.google.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

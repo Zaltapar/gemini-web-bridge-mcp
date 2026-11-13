@@ -1,0 +1,44 @@
+{
+  "name": "gemini-web-bridge-mcp",
+  "version": "1.0.0",
+  "description": "MCP server that drives the Gemini web app through a Chrome extension, using an existing Gemini Pro session without an API key.",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "gemini-web-bridge-mcp": "server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "export-cookies": "node scripts/export-cookies.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "gemini",
+    "gemini-pro",
+    "chrome-extension",
+    "opencode",
+    "claude-code",
+    "browser-automation"
+  ],
+  "author": "Mahdi Fallahnejhad (Zaltapar)",
+  "contributors": [
+    "Walkoud (original gemini-browser-mcp)"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zaltapar/gemini-web-bridge-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zaltapar/gemini-web-bridge-mcp/issues"
+  },
+  "homepage": "https://github.com/Zaltapar/gemini-web-bridge-mcp#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "ws": "^8.22.2"
+  }
+}

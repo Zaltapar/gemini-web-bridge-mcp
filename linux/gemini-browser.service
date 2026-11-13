@@ -1,0 +1,15 @@
+[Unit]
+Description=Gemini Web Bridge background browser (Xvfb + Chrome + extension)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Adjust this path if you cloned the repository somewhere else.
+ExecStart=%h/gemini-web-bridge-mcp/linux/run-browser-foreground.sh
+Restart=on-failure
+RestartSec=5
+Environment=GEMINI_DISPLAY=:99
+
+[Install]
+WantedBy=default.target
